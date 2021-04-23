@@ -29,7 +29,7 @@
             let FPS = 60;
 
             // Create the oscilbox object, with 15 boxes on the x and y axes
-            oscilbox_painter = new OscilBox(canvas, 15);
+            oscilbox_painter = new OscilBox(canvas, 20, 200, 100);
 
             // Change presets (Optional)
             oscilbox_painter.setPrimary(0, 152, 255);
@@ -37,7 +37,7 @@
 
             // Change the speed (Optional)
             // Make each box complete 1 oscillation in 2 seconds, with a 30 FPS framerate
-            oscilbox_painter.setTimePeriod(2, FPS);
+            oscilbox_painter.setTimePeriod(1, FPS);
             
             setInterval(() => {
                 // Everything here repeats with a framerate of FPS
