@@ -7,7 +7,7 @@ body {
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
+} 
 
 canvas {
     background-color: turquoise;
