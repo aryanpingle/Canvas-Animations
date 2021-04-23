@@ -23,25 +23,31 @@
 
     <script src="oscilbox.js"></script>
     <script>
+        var oscilbox_painter = 0;
         window.onload = function() {
             let canvas = document.getElementById("main-canvas");
             let FPS = 60;
 
             // Create the oscilbox object, with 15 boxes on the x and y axes
-            var painter = new OscilBox(canvas, 15);
+            oscilbox_painter = new OscilBox(canvas, 15);
 
             // Change presets (Optional)
-            painter.setPrimary(0, 152, 255);
+            oscilbox_painter.setPrimary(0, 152, 255);
             // NOTE: You can manually set each shade of color i.e. DARK, MAIN, LIGHT if you want to
 
             // Change the speed (Optional)
             // Make each box complete 1 oscillation in 2 seconds, with a 30 FPS framerate
-            painter.setTimePeriod(2, FPS);
+            oscilbox_painter.setTimePeriod(2, FPS);
             
             setInterval(() => {
                 // Everything here repeats with a framerate of FPS
-                painter.paint();
+                oscilbox_painter.paint();
             }, 1000/FPS);
+        }
+
+        window.onresize = ()=>{
+            oscilbox_painter.handle_resize();
+            print("CUM");
         }
     </script>
 </body>

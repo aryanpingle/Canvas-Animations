@@ -16,7 +16,7 @@ function map(val, lb, ub, lv, uv)
 
 class OscilBox
 {
-    constructor(canvas_element, box_count, box_width=undefined, standard_height=150, variant_height=50, variant_angle=Math.PI)
+    constructor(canvas_element, box_count, standard_height=150, variant_height=50, variant_angle=Math.PI)
     {
         this.canvas = canvas_element;
         this.canvas.width = canvas_element.clientWidth;
@@ -39,11 +39,7 @@ class OscilBox
         this.LIGHT = [255, 255, 255];
         
         // Calculate Shit
-        this.W = this.canvas.width, this.H = this.canvas.height;
-        this.ctx = this.canvas.getContext("2d");
-        this.box_width = box_width==undefined?Math.min(parseInt(this.W/this.x_mult/this.box_count), parseInt(this.H/this.y_mult/this.box_count)):box_width;
-        this.center_height = this.H/2 + this.box_count/2*this.box_width*this.y_mult;
-        this.max_d = Math.hypot((this.box_count-1)/2, (this.box_count-1)/2);
+        this.handle_resize();
         
         // Variables used everywhere
         this.t = 0;
@@ -54,13 +50,16 @@ class OscilBox
     /*
     Recalculates constants
     */
-    clean_up()
+    handle_resize()
     {
+        this.canvas.width = this.canvas.clientWidth;
+        this.canvas.height = this.canvas.clientHeight;
         this.W = this.canvas.width, this.H = this.canvas.height;
         this.ctx = this.canvas.getContext("2d");
-        this.box_width = Math.min(parseInt(this.W/this.x_mult/this.box_count), parseInt(this.H/this.y_mult/this.box_count));
+        this.box_width = Math.min(parseInt(this.W/this.x_mult/this.box_count), parseInt(this.H/this.y_mult/this.box_count)-this.variant_height)
         this.center_height = this.H/2 + this.box_count/2*this.box_width*this.y_mult;
         this.max_d = Math.hypot((this.box_count-1)/2, (this.box_count-1)/2);
+        print("REIZE");
     }
     
     paint(obj)
@@ -192,7 +191,7 @@ class OscilBox
         setColor(r, g, b);
         fillRect(0, 0, W, H);
     }
-
+    
     setPrimary(r, g, b)
     {
         this.MAIN = [r, g, b];
@@ -203,7 +202,7 @@ class OscilBox
             return val + (255-val)/2;
         });
     }
-
+    
     setTimePeriod(T, FPS)
     {
         this.time_factor = 2*Math.PI/T/FPS;
