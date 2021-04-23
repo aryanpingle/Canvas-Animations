@@ -14,7 +14,7 @@ function map(val, lb, ub, lv, uv)
 
 class MovingPaint
 {
-    constructor(canvas_element, subdivisions, color="red", bkg_color="white") {
+    constructor(canvas_element, subdivisions, color="orange", bkg_color="rgb(0, 152, 255)") {
         this.canvas = canvas_element;
         this.canvas.width = this.canvas.clientWidth;
         this.canvas.height = this.canvas.clientHeight;
