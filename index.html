@@ -5,10 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Animations</title>
-
+    
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
+    <canvas id="oscilbox" href="OscilBox/index.html"></canvas>
+    <canvas id="movingpaint" href="MovingPaint/index.html"></canvas>
     
+    <script src="OscilBox/oscilbox.js"></script>
+    <script src="MovingPaint/movingpaint.js"></script>
+    <script>
+        var oscilbox = 0;
+        var movingpaint = 0;
+        window.onload = function() {
+            let FPS = 45;
+            
+            let canvas = document.getElementById("oscilbox");
+            oscilbox = new OscilBox(canvas, 15);
+            oscilbox.setPrimary(0, 152, 255);
+            oscilbox.setTimePeriod(1, FPS);
+            
+            canvas = document.getElementById("movingpaint");
+            movingpaint = new MovingPaint(canvas, 9, "orange", "rgb(0, 255, 152)");
+
+            // Make 'em clickable
+            for(const ele of document.getElementsByTagName("canvas"))
+            {
+                ele.onclick = ()=>{
+                    window.open(ele.getAttribute("href"), "_blank");
+                };
+            }
+            
+            setInterval(() => {
+                // Everything here repeats with a framerate of FPS
+                oscilbox.paint();
+                movingpaint.paint();
+            }, 1000/FPS);
+        }
+        
+        window.onresize = ()=>{
+            oscilbox.handle_resize();
+            movingpaint.handle_resize();
+        }
+    </script>
 </body>
 </html>

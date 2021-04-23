@@ -1,3 +1,17 @@
+// Normal Helpers
+
+function print(x)
+{
+    console.log(x);
+}
+
+function map(val, lb, ub, lv, uv)
+{
+    return lv + (val-lb)*(uv-lv)/(ub-lb);
+}
+
+// Actual MovingPaint class
+
 class MovingPaint
 {
     constructor(canvas_element, subdivisions, color="red", bkg_color="white") {

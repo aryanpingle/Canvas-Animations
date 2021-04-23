@@ -56,7 +56,7 @@ class OscilBox
         this.canvas.height = this.canvas.clientHeight;
         this.W = this.canvas.width, this.H = this.canvas.height;
         this.ctx = this.canvas.getContext("2d");
-        this.box_width = Math.min(parseInt(this.W/this.x_mult/this.box_count), parseInt(this.H/this.y_mult/this.box_count)-this.variant_height)
+        this.box_width = Math.min(parseInt(this.W/this.x_mult/this.box_count), parseInt(this.H/this.y_mult/this.box_count)-this.variant_height/2)
         this.center_height = this.H/2 + this.box_count/2*this.box_width*this.y_mult;
         this.max_d = Math.hypot((this.box_count-1)/2, (this.box_count-1)/2);
         print("REIZE");
