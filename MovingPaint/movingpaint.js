@@ -67,8 +67,6 @@ class MovingPaint
         this.canvas.width = this.canvas.clientWidth;
         this.canvas.height = this.canvas.clientHeight;
         this.W = this.canvas.width, this.H = this.canvas.height;
-
-        this.ctx.fillStyle = 'rgba('+this.color.join(", ")+')';
     }
     
     stop()
