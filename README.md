@@ -1,6 +1,6 @@
 # SWD Website BITS Goa
 
-The main repository for the development of SWD website of BITS Goa. It is hosted at swd.bits-goa.ac.in
+The main repository for the development of SWD website of BITS Goa.<br>Hosted at [swd.bits-goa.ac.in](https://swd.bits-goa.ac.in)
 
 ---
 
